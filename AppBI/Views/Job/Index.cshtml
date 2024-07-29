@@ -1,0 +1,26 @@
+﻿@model IEnumerable<AppBI.Models.JobListing>
+
+@{
+    ViewData["Title"] = "Job Listings";
+}
+
+@* Bu sayfa, `_Layout.cshtml` şablonunu kullanacak *@
+@{
+    Layout = "_Layout";
+}
+
+<main role="main" class="pb-3">
+    <h1>@ViewData["Title"]</h1>
+    <div class="list-group">
+        @foreach (var job in Model)
+        {
+            <a href="#" class="list-group-item list-group-item-action">
+                <h5 class="mb-1">@job.Title</h5>
+                <p class="mb-1">Location: @job.Location</p>
+                <p class="mb-1">@job.Description</p>
+                <small>Posted on: @job.PostedDate.ToShortDateString()</small>
+            </a>
+        }
+    </div>
+    <a href="@Url.Action("Apply", "Job")" class="btn btn-primary mt-3">Apply Now</a>
+</main>
